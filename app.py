@@ -689,8 +689,8 @@ if debtor_options:
                 paper_bgcolor="rgba(0,0,0,0)",
                 plot_bgcolor="rgba(0,0,0,0)",
                 font=dict(color="#a0aec0", size=11),
-                xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-                yaxis=dict(showgrid=True, gridcolor="rgba(255,255,255,0.1)"),
+                xaxis=dict(title=None, showgrid=False, zeroline=False, showticklabels=False),
+                yaxis=dict(title=None, showgrid=True, gridcolor="rgba(255,255,255,0.1)"),
                 height=150
             )
             fig_spark.update_traces(line_color="#63b3ed", marker=dict(size=6, color="#90cdf4"))

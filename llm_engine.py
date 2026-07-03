@@ -7,6 +7,7 @@ Model: Llama 3.3 70B via Groq API (ücretsiz tier)
 
 NOT: LLM karar VERMEZ — açıklar. Bu kritik ayrımdır.
 """
+
 import os
 import time
 import pandas as pd
@@ -31,13 +32,25 @@ def build_explanation_prompt(row: pd.Series, language: str = "tr") -> str:
     Borçlu verilerinden LLM prompt'u oluştur.
     LLM sadece açıklar, karar vermez.
     """
-    trend_map = {-2: "hızla kötüleşiyor", -1: "kötüleşiyor", 0: "stabil", 1: "iyileşiyor", 2: "hızla iyileşiyor"}
-    trend_text = trend_map.get(row['trend'], "stabil")
-    
-    action_clean = row['action'].replace("🔴 ", "").replace("🟠 ", "").replace("🟡 ", "").replace("🟢 ", "")
-    
+    trend_map = {
+        -2: "hızla kötüleşiyor",
+        -1: "kötüleşiyor",
+        0: "stabil",
+        1: "iyileşiyor",
+        2: "hızla iyileşiyor",
+    }
+    trend_text = trend_map.get(row["trend"], "stabil")
+
+    action_clean = (
+        row["action"]
+        .replace("🔴 ", "")
+        .replace("🟠 ", "")
+        .replace("🟡 ", "")
+        .replace("🟢 ", "")
+    )
+
     if language == "tr":
-        prompt = f"""Bir Collections Intelligence sistemisin. Aşağıdaki borçlu için, neden bu aksiyonun önerildiğini 1-2 cümleyle açıkla. 
+        prompt = f"""Bir Collections Intelligence sistemisin. Aşağıdaki borçlu için, neden bu aksiyonun önerildiğini 1-2 cümleyle açıkla.
 KURAL: Sadece açıkla, karar VERME. İnsan yönetici nihai kararı verir.
 Ton: Profesyonel, net, finansal.
 
@@ -66,53 +79,44 @@ Days Since Last Contact: {row['days_since_contact']} days
 Trend: {trend_text}
 
 Single paragraph, max 2 sentences. Write in English."""
-    
+
     return prompt
 
 
 def generate_explanation(
-    client: Groq,
-    row: pd.Series,
-    language: str = "tr",
-    model: str = _DEFAULT_MODEL
+    client: Groq, row: pd.Series, language: str = "tr", model: str = _DEFAULT_MODEL
 ) -> str:
     """Tek bir borçlu için Groq API'si ile açıklama üret"""
-    
+
     prompt = build_explanation_prompt(row, language)
-    
+
     try:
         response = client.chat.completions.create(
             model=model,
             messages=[
                 {
                     "role": "system",
-                    "content": "Sen bir fintech AI sistemisin. Kısa, net ve açıklanabilir kararlar üretirsin. Asla spekülatif veya kesin tahmin yapmazsın."
+                    "content": "Sen bir fintech AI sistemisin. Kısa, net ve açıklanabilir kararlar üretirsin. Asla spekülatif veya kesin tahmin yapmazsın.",
                 },
-                {
-                    "role": "user",
-                    "content": prompt
-                }
+                {"role": "user", "content": prompt},
             ],
             max_tokens=150,
             temperature=0.3,  # Tutarlı çıktı için düşük temperature
         )
-        
+
         return response.choices[0].message.content.strip()
-    
+
     except Exception as e:
         return f"[API Hatası: {str(e)[:80]}]"
 
 
 def generate_all_explanations(
-    df: pd.DataFrame,
-    language: str = "tr",
-    max_rows: int = None,
-    delay: float = 0.3
+    df: pd.DataFrame, language: str = "tr", max_rows: int = None, delay: float = 0.3
 ) -> pd.DataFrame:
     """
     Tüm portföy için açıklamalar üret.
     Rate limit aşımını önlemek için delay ekle.
-    
+
     Args:
         df: Skorlanmış borçlu DataFrame'i
         language: 'tr' veya 'en'
@@ -120,24 +124,24 @@ def generate_all_explanations(
         delay: API çağrıları arası bekleme (saniye)
     """
     client = get_groq_client()
-    
+
     if max_rows:
         df = df.head(max_rows)
-    
+
     explanations = []
-    
+
     for idx, row in df.iterrows():
         explanation = generate_explanation(client, row, language)
         explanations.append(explanation)
-        
+
         # Rate limit koruması
         if delay > 0:
             time.sleep(delay)
-    
+
     df = df.copy()
-    col_name = f'explanation_{language}'
+    col_name = f"explanation_{language}"
     df[col_name] = explanations
-    
+
     return df
 
 
@@ -154,13 +158,13 @@ if __name__ == "__main__":
     # Test: İlk 3 borçlu için açıklama üret
     from data_generator import generate_mock_debtors
     from scoring_engine import score_portfolio
-    
+
     df = generate_mock_debtors()
     scored = score_portfolio(df)
-    
+
     print("İlk 3 yüksek riskli borçlu için açıklama üretiliyor...")
     result = generate_all_explanations(scored, language="tr", max_rows=3)
-    
+
     for _, row in result.iterrows():
         print(f"\n{'='*60}")
         print(f"Borçlu: {row['debtor_name']}")

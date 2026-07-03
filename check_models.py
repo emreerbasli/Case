@@ -1,13 +1,19 @@
-import sys
-sys.stdout.reconfigure(encoding='utf-8')
+"""
+check_models.py — Groq API'sinde mevcut modelleri listeler.
+Kullanım: python check_models.py (GROQ_API_KEY env değişkeni gerekli)
+"""
 import os
-
-if 'GROQ_API_KEY' not in os.environ:
-    os.environ['GROQ_API_KEY'] = ''
-
+import sys
 from groq import Groq
-client = Groq(api_key=os.environ['GROQ_API_KEY'])
 
+sys.stdout.reconfigure(encoding="utf-8")
+
+api_key = os.environ.get("GROQ_API_KEY", "")
+if not api_key:
+    print("HATA: GROQ_API_KEY environment variable bulunamadi.")
+    sys.exit(1)
+
+client = Groq(api_key=api_key)
 models = client.models.list()
 for m in models.data:
     print(m.id)

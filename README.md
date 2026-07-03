@@ -1,70 +1,71 @@
-# 🏦 Zolvo Collection AI
+# Zolvo Collection AI
 
-Zolvo Collection AI, şirketlerin (B2B) gecikmiş alacaklarını (tahsilat) yönetmelerini kolaylaştıran, yapay zeka destekli bir **Borçlu Önceliklendirme ve Karar Destek** sistemidir. 
+Zolvo Collection AI is a robust, AI-powered **Debtor Prioritization and Decision Support System** designed to streamline B2B accounts receivable and collections management.
 
-Bu PoC (Proof of Concept) uygulaması, kural tabanlı algoritmalar ile hesaplanan risk skorlarını, **Llama 3.3 70B** dil modelinin üstün muhakeme yeteneği ile birleştirerek tahsilat ekiplerine "açıklanabilir" ve şeffaf aksiyon önerileri sunar.
+This Proof of Concept (PoC) application integrates a sophisticated rule-based risk scoring algorithm with the reasoning capabilities of the **Llama 3.3 70B** large language model. It provides collections teams with transparent, explainable action recommendations and comprehensive portfolio analytics.
 
-![Zolvo Dashboard](assets/dashboard.png)
+## Key Features
 
-## 🌟 Temel Özellikler
+* **Advanced Rule-Based Risk Scoring:** Calculates a mathematical risk score (0-100) for each debtor by evaluating multiple dimensions:
+  * Days Overdue (30%)
+  * Outstanding Amount (20%)
+  * Payment History (15%)
+  * Sector Risk (15%)
+  * Credit Rating (10%)
+  * Days Since Last Contact (10%)
+  * Dynamic Trend Bonus/Penalty based on historical payment performance.
+* **LLM-Powered Explainability:** Goes beyond simple "Call" or "Email" actions. Using the **Llama 3.3 70B** model via the Groq API, the system generates professional explanations (in Turkish or English) detailing *why* a specific action is recommended based on the debtor's full context (sector, credit rating, past delays). *Note: The AI explains the decision; it does not make the final call.*
+* **Comprehensive Visual Analytics:** 
+  * Interactive portfolio sector distribution via Plotly Pie Charts.
+  * Individual debtor trend analysis using historical invoice delay Sparklines.
+  * Detailed breakdown of risk score components.
+* **Cloud-Native Security (Cloudflare Workers):** The application implements a secure, serverless edge proxy via Cloudflare. API keys are never exposed on the client side; all LLM requests are securely routed through the proxy.
 
-* **📊 Kural Tabanlı Risk Skorlama:** Gecikme günü, açık tutar, ödeme geçmişi, son iletişim tarihi ve gecikme trendi metriklerini kullanarak her borçlu için 0-100 arası matematiksel bir risk skoru hesaplar.
-* **🤖 LLM Destekli Açıklanabilirlik:** Sadece "Hemen Ara" veya "E-posta At" demekle kalmaz; arka planda Groq API üzerinden çalışan **Llama 3.3 70B** modeli ile bu aksiyonun *neden* önerildiğini, insan dilinde (Türkçe/İngilizce) detaylıca açıklar. *Not: Yapay zeka doğrudan karar almaz, alınan kural tabanlı kararı açıklar.*
-* **🛡️ Bulut Tabanlı Güvenlik (Cloudflare Workers):** Sistem, API anahtarlarını güvende tutmak için istemci tarafında anahtar barındırmaz. İstekler, Cloudflare üzerinde çalışan bir Serverless Proxy üzerinden şifreli bir şekilde API'ye iletilir.
-* **⚡ Yüksek Performanslı Arayüz:** Streamlit ile geliştirilen anlık filtreleme, metrik kartları ve durum panelleri sayesinde portföyü saniyeler içinde analiz etmenizi sağlar.
+## System Architecture
 
-![Zolvo Explanation](assets/explanation.png)
+1. **Synthetic Data Engine (`data_generator.py`):** Generates realistic B2B debtor profiles including sectors (Technology, Construction, etc.), Findeks-style credit ratings (A, B, C, D), invoice counts, and historical payment delay matrices.
+2. **Scoring Engine (`scoring_engine.py`):** Processes the data through a weighted algorithmic pipeline to produce the final risk scores and actionable categorizations.
+3. **Streamlit Interface (`app.py`):** Renders the high-performance UI, integrating Plotly for data visualization, real-time filtering, and detailed debtor analysis views.
+4. **Cloudflare Proxy:** Acts as a secure intermediary for API calls. When an explanation is requested, the Streamlit app queries the Cloudflare Worker, which injects the encrypted API key and forwards the request to Groq.
+5. **LLM Engine (`llm_engine.py`):** Formats the debtor context and interfaces with the LLM to generate concise, professional strategic advice.
 
-## 🧠 Çalışma Mantığı (Mimari)
+## Installation and Setup
 
-1. **Sentetik Veri Üretimi (`data_generator.py`):** Rastgele B2B borçlu verileri (isim, gecikme günü, tutar, geçmiş skorlar) üretilir.
-2. **Skorlama Motoru (`scoring_engine.py`):** Üretilen veriler dinamik bir formül süzgecinden geçer:
-   * %35 Gecikme Günü
-   * %25 Açık Tutar
-   * %20 Ödeme Geçmişi
-   * %20 Son İletişim Tarihi
-   * ± Gecikme Trendi Bonusu
-3. **Streamlit UI (`app.py`):** Skorlanan veriler görselleştirilir, filtrelenir ve kullanıcıya sunulur.
-4. **Cloudflare Proxy:** "Açıklama Üret" butonuna basıldığında, Streamlit doğrudan Groq API'sine gitmez. Önce Cloudflare Worker'a istek atar. Cloudflare, arka planda güvenli şifreyi ekleyerek isteği Groq'a iletir.
-5. **LLM Motoru (`llm_engine.py`):** Llama 3.3 70B modeli, gelen veriyi analiz ederek temsilci için bir konuşma / strateji açıklaması hazırlar.
+To run the project locally, follow these steps:
 
-## 🚀 Kurulum ve Çalıştırma
+### Prerequisites
+- Python 3.10 or higher
+- Cloudflare Account (for the security proxy layer)
 
-Projeyi yerel bilgisayarınızda çalıştırmak için aşağıdaki adımları izleyin:
+### Instructions
 
-### Gereksinimler
-- Python 3.10 veya üzeri
-- Cloudflare Hesabı (Proxy güvenlik katmanı için)
-
-### Adımlar
-
-1. **Depoyu Klonlayın**
+1. **Clone the Repository**
    ```bash
    git clone https://github.com/emreerbasli/Case.git
    cd Case
    ```
 
-2. **Gerekli Kütüphaneleri Yükleyin**
+2. **Install Dependencies**
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Güvenlik Proxy'sini Ayarlayın**
-   * Uygulamanın içerisinde API Key bulunmamaktadır.
-   * Kendi Cloudflare Worker'ınızı oluşturup `ZOLVO_API_KEY` environment variable'ı ile Groq API anahtarınızı tanımlayın.
-   * `llm_engine.py` içerisindeki `base_url` kısmına kendi Worker adresinizi yapıştırın.
+3. **Configure the Security Proxy**
+   * The application codebase does not contain API keys.
+   * Create a Cloudflare Worker and define your Groq API key as a secret environment variable (`ZOLVO_API_KEY`).
+   * Update the `base_url` parameter in `llm_engine.py` with your custom Worker URL.
 
-4. **Uygulamayı Başlatın**
+4. **Launch the Application**
    ```bash
    streamlit run app.py
    ```
 
-## 🛠️ Kullanılan Teknolojiler
+## Technology Stack
 
-* **Backend / Frontend:** Python, Streamlit, Pandas
-* **Yapay Zeka (LLM):** Meta Llama 3.3 70B (Groq API üzerinden)
-* **Güvenlik Katmanı:** Cloudflare Workers (Serverless Edge Proxy)
-* **Versiyon Kontrolü:** Git & GitHub
+* **Backend / Frontend:** Python, Streamlit, Pandas, Plotly
+* **Artificial Intelligence (LLM):** Meta Llama 3.3 70B (via Groq API)
+* **Security Layer:** Cloudflare Workers (Serverless Edge Proxy)
+* **Version Control:** Git & GitHub
 
 ---
-*Bu proje, Collections Intelligence sistemlerinin potansiyelini göstermek amacıyla oluşturulmuş bir Proof of Concept (PoC) çalışmasıdır.*
+*This project is a Proof of Concept (PoC) demonstrating the potential of integrating advanced analytics and Generative AI into modern Collections Intelligence systems.*

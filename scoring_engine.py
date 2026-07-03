@@ -46,38 +46,70 @@ def calculate_trend_bonus(trend: int) -> float:
     return bonus_map.get(trend, 0)
 
 
+def calculate_sector_risk(sector: str) -> float:
+    """Sektör bazlı risk skoru (100 en riskli)"""
+    sector_map = {
+        "İnşaat": 100,
+        "Perakende": 80,
+        "Lojistik": 60,
+        "Üretim": 40,
+        "Teknoloji": 20,
+        "Sağlık": 10
+    }
+    return sector_map.get(sector, 50)
+
+
+def calculate_credit_risk(rating: str) -> float:
+    """Kredi notuna göre risk skoru (100 en riskli)"""
+    rating_map = {
+        "A": 10,
+        "B": 35,
+        "C": 70,
+        "D": 100
+    }
+    return rating_map.get(rating, 50)
+
+
 def calculate_risk_score(row: pd.Series) -> dict:
     """
     Her borçlu için açıklanabilir risk skoru hesapla.
-
-    Döndürür:
-    - risk_score: 0-100 arası nihai skor
-    - score_breakdown: her bileşenin katkısı
-    - trend_bonus: trend katkısı
+    Yeni Formül:
+    - Gecikme (%30)
+    - Tutar (%20)
+    - Geçmiş (%15)
+    - İletişim (%10)
+    - Sektör Riski (%15)
+    - Kredi Notu (%10)
     """
     # Normalize edilmiş bileşenler
     overdue_norm = normalize_overdue(row["days_overdue"])
     amount_norm = normalize_amount(row["outstanding_amount"])
     history_risk = normalize_payment_history(row["payment_history_score"])
     contact_norm = normalize_contact_gap(row["days_since_contact"])
+    sector_risk = calculate_sector_risk(row["sector"])
+    credit_risk = calculate_credit_risk(row["credit_rating"])
     trend_bonus = calculate_trend_bonus(row["trend"])
 
-    # Ağırlıklı formül
+    # Yeni Ağırlıklı formül
     base_score = (
-        overdue_norm * 0.35
-        + amount_norm * 0.25
-        + history_risk * 0.20
-        + contact_norm * 0.20
+        overdue_norm * 0.30
+        + amount_norm * 0.20
+        + history_risk * 0.15
+        + contact_norm * 0.10
+        + sector_risk * 0.15
+        + credit_risk * 0.10
     )
 
     # Trend bonusu ekle ve 0-100 arasında sınırla
     final_score = max(0, min(100, base_score + trend_bonus))
 
     breakdown = {
-        "overdue_component": round(overdue_norm * 0.35, 2),
-        "amount_component": round(amount_norm * 0.25, 2),
-        "history_component": round(history_risk * 0.20, 2),
-        "contact_component": round(contact_norm * 0.20, 2),
+        "overdue_component": round(overdue_norm * 0.30, 2),
+        "amount_component": round(amount_norm * 0.20, 2),
+        "history_component": round(history_risk * 0.15, 2),
+        "contact_component": round(contact_norm * 0.10, 2),
+        "sector_component": round(sector_risk * 0.15, 2),
+        "credit_component": round(credit_risk * 0.10, 2),
         "trend_bonus": round(trend_bonus, 2),
         "base_score": round(base_score, 2),
     }
@@ -151,6 +183,10 @@ def score_portfolio(df: pd.DataFrame) -> pd.DataFrame:
         result = {
             "debtor_id": row["debtor_id"],
             "debtor_name": row["debtor_name"],
+            "sector": row["sector"],
+            "credit_rating": row["credit_rating"],
+            "invoice_count": row["invoice_count"],
+            "historical_delays": row["historical_delays"],
             "days_overdue": row["days_overdue"],
             "outstanding_amount": row["outstanding_amount"],
             "payment_history_score": row["payment_history_score"],
@@ -168,6 +204,8 @@ def score_portfolio(df: pd.DataFrame) -> pd.DataFrame:
             "score_amount": breakdown["amount_component"],
             "score_history": breakdown["history_component"],
             "score_contact": breakdown["contact_component"],
+            "score_sector": breakdown["sector_component"],
+            "score_credit": breakdown["credit_component"],
             "score_trend": breakdown["trend_bonus"],
         }
         results.append(result)

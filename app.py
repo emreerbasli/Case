@@ -9,6 +9,8 @@ import streamlit as st
 import io
 import os
 from datetime import datetime
+import plotly.express as px
+import plotly.graph_objects as go
 
 # Modüller
 from data_generator import generate_mock_debtors
@@ -322,10 +324,12 @@ with st.sidebar:
             Risk Formülü
         </div>
         <div style='color: #718096; font-size: 0.75rem; line-height: 1.8;'>
-            📅 Gecikme Günü: <b style='color:#90cdf4'>%35</b><br>
-            💰 Açık Tutar: <b style='color:#90cdf4'>%25</b><br>
-            📊 Ödeme Geçmişi: <b style='color:#90cdf4'>%20</b><br>
-            📞 Son İletişim: <b style='color:#90cdf4'>%20</b><br>
+            📅 Gecikme Günü: <b style='color:#90cdf4'>%30</b><br>
+            💰 Açık Tutar: <b style='color:#90cdf4'>%20</b><br>
+            📊 Ödeme Geçmişi: <b style='color:#90cdf4'>%15</b><br>
+            🏢 Sektör Riski: <b style='color:#90cdf4'>%15</b><br>
+            💳 Kredi Notu: <b style='color:#90cdf4'>%10</b><br>
+            📞 Son İletişim: <b style='color:#90cdf4'>%10</b><br>
             📈 Trend: <b style='color:#90cdf4'>±bonus</b>
         </div>
     </div>
@@ -456,6 +460,26 @@ for col, (action, color, hex_color) in zip(
         )
 
 st.markdown("<br>", unsafe_allow_html=True)
+st.markdown('<div class="section-title">🏢 Portföy Sektörel Dağılımı</div>', unsafe_allow_html=True)
+
+fig_sector = px.pie(
+    filtered_df, 
+    names="sector", 
+    values="outstanding_amount", 
+    hole=0.4,
+    color_discrete_sequence=px.colors.qualitative.Pastel
+)
+fig_sector.update_layout(
+    margin=dict(t=20, b=20, l=20, r=20),
+    paper_bgcolor="rgba(0,0,0,0)",
+    plot_bgcolor="rgba(0,0,0,0)",
+    font=dict(color="#e2e8f0"),
+    showlegend=True,
+    height=300
+)
+st.plotly_chart(fig_sector, use_container_width=True)
+
+st.markdown("<br>", unsafe_allow_html=True)
 
 
 # ──────────────────────────────────────────────────────────────
@@ -469,6 +493,8 @@ st.markdown(
 # Görüntülenecek kolonlar
 display_cols = {
     "debtor_name": "Borçlu Adı",
+    "sector": "Sektör",
+    "credit_rating": "Kredi Notu",
     "risk_score": "Risk Skoru",
     "action": "Aksiyon",
     "days_overdue": "Gecikme (gün)",
@@ -624,10 +650,12 @@ if debtor_options:
         st.markdown("**📊 Skor Bileşenleri (Açıklanabilirlik)**")
 
         components = [
-            ("📅 Gecikme Günü (%35)", debtor_row["score_overdue"], 35),
-            ("💰 Açık Tutar (%25)", debtor_row["score_amount"], 25),
-            ("📊 Ödeme Geçmişi (%20)", debtor_row["score_history"], 20),
-            ("📞 Son İletişim (%20)", debtor_row["score_contact"], 20),
+            ("📅 Gecikme Günü (%30)", debtor_row["score_overdue"], 30),
+            ("💰 Açık Tutar (%20)", debtor_row["score_amount"], 20),
+            ("📊 Ödeme Geçmişi (%15)", debtor_row["score_history"], 15),
+            ("🏢 Sektör Riski (%15)", debtor_row["score_sector"], 15),
+            ("💳 Kredi Notu (%10)", debtor_row["score_credit"], 10),
+            ("📞 Son İletişim (%10)", debtor_row["score_contact"], 10),
         ]
 
         for label, value, max_val in components:
@@ -647,6 +675,26 @@ if debtor_options:
             """,
                 unsafe_allow_html=True,
             )
+        # Sparkline (Historical Delays)
+        delays = debtor_row.get("historical_delays", [])
+        if delays:
+            st.markdown("<br>", unsafe_allow_html=True)
+            fig_spark = px.line(
+                y=delays, 
+                title="Geçmiş 6 Fatura Gecikme Trendi (Gün)",
+                markers=True
+            )
+            fig_spark.update_layout(
+                margin=dict(t=30, b=10, l=0, r=0),
+                paper_bgcolor="rgba(0,0,0,0)",
+                plot_bgcolor="rgba(0,0,0,0)",
+                font=dict(color="#a0aec0", size=11),
+                xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+                yaxis=dict(showgrid=True, gridcolor="rgba(255,255,255,0.1)"),
+                height=150
+            )
+            fig_spark.update_traces(line_color="#63b3ed", marker=dict(size=6, color="#90cdf4"))
+            st.plotly_chart(fig_spark, use_container_width=True)
 
         # Trend kutusunu her zaman göster (0 ise stabil)
         trend_color = (

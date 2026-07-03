@@ -64,16 +64,32 @@ DEBTOR_NAMES = [
     "Erzincan Maden A.Ş.",
 ]
 
+SECTORS = ["Teknoloji", "İnşaat", "Lojistik", "Perakende", "Üretim", "Sağlık"]
+CREDIT_RATINGS = ["A", "B", "C", "D"]
+
+def generate_historical_delays(segment, current_delay):
+    """Son 6 faturanın gecikme gün sayısını trende uygun şekilde üret"""
+    base = []
+    if segment == "kritik":
+        # Hızla kötüleşen bir trend (geçmişte daha az gecikme, şimdi çok)
+        base = [max(0, current_delay - i*15 + random.randint(-10, 10)) for i in range(6, 0, -1)]
+    elif segment == "yuksek_risk":
+        base = [max(0, current_delay - i*10 + random.randint(-5, 5)) for i in range(6, 0, -1)]
+    elif segment == "orta_risk":
+        base = [max(0, current_delay - i*3 + random.randint(-5, 5)) for i in range(6, 0, -1)]
+    else:  # dusuk_risk
+        base = [max(0, current_delay + random.randint(-2, 2)) for i in range(6)]
+    return base
 
 def generate_mock_debtors(n=50):
     """50 gerçekçi mock borçlu verisi üret — seed sabit, her çağrıda aynı veri"""
-    # Fonksiyon içinde seed → Streamlit cache + hot-reload tutarlılığı
     random.seed(42)
     np.random.seed(42)
     records = []
 
     for i in range(n):
         name = DEBTOR_NAMES[i % len(DEBTOR_NAMES)]
+        sector = random.choice(SECTORS)
 
         # Gerçekçi dağılım için segment belirle
         segment = np.random.choice(
@@ -87,6 +103,8 @@ def generate_mock_debtors(n=50):
             payment_history_score = random.uniform(0, 30)
             days_since_contact = random.randint(20, 60)
             trend = random.choice([-2, -2, -1])  # Kötüleşiyor
+            credit_rating = np.random.choice(["C", "D"], p=[0.2, 0.8])
+            invoice_count = random.randint(3, 20)
 
         elif segment == "yuksek_risk":
             days_overdue = random.randint(30, 75)
@@ -94,6 +112,8 @@ def generate_mock_debtors(n=50):
             payment_history_score = random.uniform(20, 55)
             days_since_contact = random.randint(10, 30)
             trend = random.choice([-2, -1, -1, 0])
+            credit_rating = np.random.choice(["B", "C", "D"], p=[0.1, 0.6, 0.3])
+            invoice_count = random.randint(2, 15)
 
         elif segment == "orta_risk":
             days_overdue = random.randint(10, 45)
@@ -101,6 +121,8 @@ def generate_mock_debtors(n=50):
             payment_history_score = random.uniform(45, 75)
             days_since_contact = random.randint(3, 15)
             trend = random.choice([-1, 0, 0, 1])
+            credit_rating = np.random.choice(["A", "B", "C"], p=[0.2, 0.6, 0.2])
+            invoice_count = random.randint(1, 10)
 
         else:  # dusuk_risk
             days_overdue = random.randint(0, 20)
@@ -108,24 +130,26 @@ def generate_mock_debtors(n=50):
             payment_history_score = random.uniform(65, 100)
             days_since_contact = random.randint(0, 7)
             trend = random.choice([0, 1, 1, 2])
+            credit_rating = np.random.choice(["A", "B"], p=[0.8, 0.2])
+            invoice_count = random.randint(1, 5)
 
-        # Son iletişim tarihi
         last_contact_date = datetime.now() - timedelta(days=days_since_contact)
-
-        # Fatura tarihi
-        invoice_date = datetime.now() - timedelta(
-            days=days_overdue + random.randint(10, 30)
-        )
+        invoice_date = datetime.now() - timedelta(days=days_overdue + random.randint(10, 30))
+        historical_delays = generate_historical_delays(segment, days_overdue)
 
         records.append(
             {
                 "debtor_id": f"DBT-{i+1:03d}",
                 "debtor_name": name,
+                "sector": sector,
+                "credit_rating": credit_rating,
+                "invoice_count": invoice_count,
                 "days_overdue": days_overdue,
                 "outstanding_amount": round(outstanding_amount, 2),
                 "payment_history_score": round(payment_history_score, 1),
                 "days_since_contact": days_since_contact,
-                "trend": trend,  # -2: Hızlı kötüleşme, -1: Kötüleşme, 0: Stabil, 1: İyileşme, 2: Hızlı iyileşme
+                "trend": trend,
+                "historical_delays": historical_delays,
                 "last_contact_date": last_contact_date.strftime("%Y-%m-%d"),
                 "invoice_date": invoice_date.strftime("%Y-%m-%d"),
                 "segment": segment,
@@ -134,9 +158,6 @@ def generate_mock_debtors(n=50):
 
     return pd.DataFrame(records)
 
-
 if __name__ == "__main__":
     df = generate_mock_debtors()
     print(df.head())
-    print(f"\nToplam borçlu: {len(df)}")
-    print(f"Segment dağılımı:\n{df['segment'].value_counts()}")

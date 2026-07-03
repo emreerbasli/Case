@@ -55,6 +55,9 @@ KURAL: Sadece açıkla, karar VERME. İnsan yönetici nihai kararı verir.
 Ton: Profesyonel, net, finansal.
 
 Borçlu: {row['debtor_name']}
+Sektör: {row.get('sector', 'Bilinmiyor')}
+Kredi Notu: {row.get('credit_rating', 'Bilinmiyor')}
+Açık Fatura Sayısı: {row.get('invoice_count', 1)}
 Risk Skoru: {row['risk_score']}/100
 Önerilen Aksiyon: {action_clean}
 Gecikme Günü: {row['days_overdue']} gün
@@ -70,6 +73,9 @@ RULE: Only explain, do NOT make the decision. The human manager makes the final 
 Tone: Professional, concise, financial.
 
 Debtor: {row['debtor_name']}
+Sector: {row.get('sector', 'Unknown')}
+Credit Rating: {row.get('credit_rating', 'Unknown')}
+Invoice Count: {row.get('invoice_count', 1)}
 Risk Score: {row['risk_score']}/100
 Recommended Action: {action_clean}
 Days Overdue: {row['days_overdue']} days

@@ -4,6 +4,8 @@ Zolvo Collection AI is a robust, AI-powered **Debtor Prioritization and Decision
 
 This Proof of Concept (PoC) application integrates a sophisticated rule-based risk scoring algorithm with the reasoning capabilities of the **Llama 3.3 70B** large language model. It provides collections teams with transparent, explainable action recommendations and comprehensive portfolio analytics.
 
+![Zolvo Dashboard](assets/dashboard.png)
+
 ## Key Features
 
 * **Advanced Rule-Based Risk Scoring:** Calculates a mathematical risk score (0-100) for each debtor by evaluating multiple dimensions:
@@ -20,6 +22,8 @@ This Proof of Concept (PoC) application integrates a sophisticated rule-based ri
   * Individual debtor trend analysis using historical invoice delay Sparklines.
   * Detailed breakdown of risk score components.
 * **Cloud-Native Security (Cloudflare Workers):** The application implements a secure, serverless edge proxy via Cloudflare. API keys are never exposed on the client side; all LLM requests are securely routed through the proxy.
+
+![Debtor Details](assets/details.png)
 
 ## System Architecture
 

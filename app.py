@@ -19,7 +19,7 @@ from llm_engine import get_single_explanation
 # SAYFA AYARLARI
 # ──────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="Collections Intelligence | Zolvo PoC",
+    page_title="Zolvo Collection AI | Zolvo PoC",
     page_icon="🏦",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -266,7 +266,7 @@ with st.sidebar:
     <div style='text-align: center; padding: 20px 0;'>
         <div style='font-size: 2.5rem;'>🏦</div>
         <div style='color: #e2e8f0; font-weight: 800; font-size: 1.1rem; margin-top: 8px;'>
-            Collections Intelligence
+            Zolvo Collection AI
         </div>
         <div style='color: #4a6fa5; font-size: 0.75rem; margin-top: 4px; letter-spacing: 1px;'>
             ZOLVO POC
@@ -307,16 +307,6 @@ with st.sidebar:
     lang = st.selectbox("LLM Açıklama Dili", ["Türkçe", "English"])
     lang_code = "tr" if lang == "Türkçe" else "en"
 
-    # API Key
-    groq_api_key = st.text_input(
-        "Groq API Key",
-        value=os.environ.get("GROQ_API_KEY", ""),
-        type="password",
-        help="https://console.groq.com adresinden ücretsiz alabilirsiniz",
-    )
-    if groq_api_key:
-        os.environ["GROQ_API_KEY"] = groq_api_key
-
     st.markdown("<hr>", unsafe_allow_html=True)
 
     if st.button("🔄 Portföyü Yenile"):
@@ -353,7 +343,7 @@ st.markdown(
     """
 <div class="main-header">
     <div class="zolvo-badge">Zolvo PoC · Haziran 2026</div>
-    <h1>🏦 Collections Intelligence Dashboard</h1>
+    <h1>🏦 Zolvo Collection AI Dashboard</h1>
     <p>AI destekli borçlu önceliklendirme sistemi · Açıklanabilir kural tabanlı skorlama + Groq LLM açıklama motoru</p>
 </div>
 """,
@@ -722,7 +712,7 @@ st.markdown("<hr>", unsafe_allow_html=True)
 st.markdown(
     """
 <div style='text-align: center; padding: 20px; color: #4a6fa5; font-size: 0.78rem;'>
-    <b style='color: #718096;'>Collections Intelligence PoC</b> ·
+    <b style='color: #718096;'>Zolvo Collection AI PoC</b> ·
     Zolvo Case Study · Oktavis × Tessera Lab · Haziran 2026<br>
     Python · Streamlit · Groq API (Llama 3.3 70B) · Açıklanabilir Kural Tabanlı Skorlama
 </div>

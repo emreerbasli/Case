@@ -17,14 +17,14 @@ from groq import Groq
 _DEFAULT_MODEL = "llama-3.3-70b-versatile"
 
 
+
 def get_groq_client():
     """Groq client'ı başlat"""
-    api_key = os.environ.get("GROQ_API_KEY", "")
-    if not api_key:
-        raise ValueError(
-            "GROQ_API_KEY bulunamadı! Sol menüden veya environment variable olarak girin."
-        )
-    return Groq(api_key=api_key)
+    # API key Cloudflare üzerinde saklanıyor, proxy URL üzerinden erişiyoruz
+    return Groq(
+        api_key="secured-by-cloudflare",
+        base_url="https://zolvo-groq-proxy.emrezeynoel.workers.dev"
+    )
 
 
 def build_explanation_prompt(row: pd.Series, language: str = "tr") -> str:

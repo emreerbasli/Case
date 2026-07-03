@@ -1,0 +1,352 @@
+﻿ZOLVO
+Case Study Analiz Raporu
+Oktavis ├ù Tessera Lab | Yetenek Staj Program─▒ T├╝rkiye 2026
+Haz─▒rlayan: Emre  |  Tarih: Haziran 2026
+ÔÇ£AI Back-Office Automation for Commercial LendersÔÇØ
+B├ûL├£M 1 ÔÇö Genel ├£r├╝n & Pazar Analizi
+1. ├£r├╝n ve Sekt├Âr
+├£r├╝n Ne ─░┼ş Yap─▒yor?
+Zolvo, ticari kredi kurulu┼şlar─▒n─▒n (factoring ┼şirketleri ve Asset-Based Lending ÔÇö ABL kurumlar─▒) t├╝m arka ofis operasyonlar─▒n─▒ yapay zeka ile otomatize eden bir B2B SaaS platformudur. Platform; otomatik veri al─▒m─▒ (data ingestion), fatura uzla┼şt─▒rma (invoice reconciliation), tahsilat ileti┼şimi (collections outreach) ve funder izleme (funder monitoring) i┼şlemlerini AI ajanlar─▒ arac─▒l─▒─ş─▒yla y├╝r├╝t├╝r. M├╝┼şteri ekipleri yaln─▒zca istisnalar (exceptions) ile ilgilenir.
+Sekt├Âr Konumlanmas─▒
+Zolvo, FinTech ├ù B2B SaaS kesi┼şiminde konumlanmaktad─▒r:
+Ticari kredi servisleme yaz─▒l─▒m─▒ (Commercial Loan Servicing Software)
+Yapay zeka destekli finansal arka ofis otomasyonu
+Factoring & ABL operasyon teknolojisi (OperTech)
+Factoring ve ABL sekt├Âr├╝, 4 trilyon dolar ├╝zerindeAUM (Assets Under Management) b├╝y├╝kl├╝─ş├╝ne sahip olmas─▒na kar┼ş─▒n 1990ÔÇÖlardan kalma yaz─▒l─▒mlar ve manuel i┼ş ak─▒┼şlar─▒yla y├Ânetilmektedir. Bu yap─▒sal kopukluk, ZolvoÔÇÖnun hedefledi─şi temel f─▒rsat─▒ olu┼şturmaktad─▒r.
+Hedef Kullan─▒c─▒ Kitlesi ve Pazar Segmenti
+Factoring ┼şirketleri: M├╝┼şteri faturalar─▒n─▒ sat─▒n alan ve ├Âdemeyi ├Ânceden yapan kurumlar
+ABL kurumlar─▒: Alacak hesaplar─▒, envanter veya ekipman─▒ teminat olarak kabul eden ticari kredi verenler
+├ûzel kredi fonlar─▒: Portf├Ây ┼şirketlerini izleyen ve raporlama altyap─▒s─▒na ihtiya├ğ duyan kurumlar
+Hedef b├╝y├╝kl├╝k: 100MÔÇô2B dolar AUM aral─▒─ş─▒ndaki orta ├Âl├ğekli ticari kredi kurulu┼şlar─▒
+2. Problem ve ├ç├Âz├╝m
+Spesifik Problem
+500 milyon dolar AUMÔÇÖa sahip tipik bir factoring ┼şirketinde mevcut durum ┼ş├Âyledir:
+Sorun Alan─▒
+├ûl├ğ├╝lebilir Etki
+Wire ├Âdeme e┼şle┼ştirme
+G├╝nl├╝k 6+ saat manuel i┼ş
+Manuel uzla┼şt─▒rma hatas─▒
+Ayda 16ÔÇô20 i┼şlem hatas─▒
+─░┼şlem d├Âng├╝s├╝
+3 g├╝nl├╝k gecikme (sekt├Ârde kabul edilemez)
+Fatura do─şrulama maliyeti
+Fatura ba┼ş─▒na 2ÔÇô5 dolar, 25 ki┼şilik ekip
+Fonlama gecikmesi
+1ÔÇô3 g├╝nl├╝k gecikme
+Collections Manager y├╝k├╝
+G├╝nde 50ÔÇô100 bor├ğlu takibi, Excel + e-posta kaos─▒
+Sorunun ├Âz├╝: Yeni m├╝┼şteri kazan─▒m─▒, daha iyi yaz─▒l─▒m de─şil, daha fazla ba┼ş eleman anlam─▒na gelmektedir. ├ûl├ğeklenme insana ba─şl─▒d─▒r ve bu model s├╝rd├╝r├╝lebilir de─şildir.
+ZolvoÔÇÖnun ├ç├Âz├╝m Yakla┼ş─▒m─▒
+Zolvo, banka hesaplar─▒, kredi y├Ânetim sistemleri (LMS/FMS) ve operasyon ekipleri aras─▒na oturan bir AI katman─▒d─▒r:
+Banka hesaplar─▒yla do─şrudan senkronizasyon ÔåÆ ger├ğek zamanl─▒ ├Âdeme takibi
+LMS/FMS entegrasyonu ÔåÆ otomatik uzla┼şt─▒rma ve raporlama
+─░leti┼şim kanallar─▒yla ba─şlant─▒ ÔåÆ AI destekli tahsilat outreach
+├ç─▒kt─▒: Ekip yaln─▒zca istisnalarla ilgilenir, rutin i┼şlemler AI taraf─▒ndan tamamlan─▒r
+├ûl├ğ├╝m
+Sonu├ğ
+─░lk m├╝┼şteri etkisi
+14 ki┼şilik ekibin i┼şini bir ayda teslim ald─▒
+Go-live s├╝resi
+Haftalar (rakipler: aylar)
+Sekt├Âr b├╝y├╝kl├╝─ş├╝
+4 trilyon dolar+ AUM, otomasyon pazar─▒ a├ğ─▒k
+3. Finansal Model
+Gelir Modeli: SaaS Aboneli─şi + AUM Tabanl─▒ Fiyatland─▒rma
+ZolvoÔÇÖnun kamuya a├ğ─▒k fiyatland─▒rmas─▒ bulunmamakla birlikte, YC lansman─▒ ve sekt├Âr normlar─▒ndan yola ├ğ─▒karak gelir modeli ┼ş├Âyle kurgulanm─▒┼ş olmal─▒d─▒r:
+─░lk yap─▒: Y─▒ll─▒k s├Âzle┼şme (Annual Contract)
+B├╝y├╝me mekanizmas─▒: AUM tabanl─▒ abonelik: Kurumun portf├Ây b├╝y├╝kl├╝─ş├╝ne g├Âre ├Âl├ğeklenen fiyatland─▒rma
+Ek gelir: Implementation fee: ─░lk kurulum ve entegrasyon i├ğin tek seferlik ├╝cret
+Abonelik modeli bu sekt├Âr i├ğin idealdir: B2B kredi kurumlar─▒ uzun vadeli ara├ğlara ba─şl─▒ kal─▒r, churn d├╝┼şkt├╝r. LMS/FMS entegrasyonlar─▒ yap─▒ld─▒ktan sonra switching maliyeti y├╝ksektir. M├╝┼şteri b├╝y├╝d├╝k├ğe Zolvo geliri do─şal olarak artar.
+4. Teknolojik Altyap─▒
+Kullan─▒lan Teknolojiler (YC lansman─▒ ve kurucu profillerinden ├ğ─▒kar─▒m)
+Katman
+Teknoloji
+Kullan─▒m Alan─▒
+LLM Orkestrasyon
+GPT-4o / Claude seviyesi modeller
+Fatura ayr─▒┼şt─▒rma, e-posta taslak─▒, anomali tespiti
+Voice AI
+CTO deneyiminden aktar─▒lan ses altyap─▒s─▒
+Tahsilat outreach motoru
+API Entegrasyon
+Plaid / REST / Webhook
+Banka APIÔÇÖleri, LMS, FMS ba─şlant─▒s─▒
+Veri Pipeline
+Apache Kafka (tahmini)
+Ger├ğek zamanl─▒ ├Âdeme event i┼şleme
+Bulut
+AWS veya GCP
+Standart YC ┼şirket altyap─▒s─▒
+LLM kullan─▒m─▒, yap─▒land─▒r─▒lmam─▒┼ş veri yo─şun bir sekt├Ârde kritik avantaj sa─şlar: fatura metinleri, e-posta zincirleri ve banka ├Âdeme a├ğ─▒klamalar─▒ standart format i├ğermez. LLMÔÇÖler bu karma┼ş─▒kl─▒─ş─▒ kural tabanl─▒ sistemlerin aksine ba─şlamsal olarak i┼şleyebilir.
+Potansiyel k─▒s─▒tlamalar: Finansal verilerin LLMÔÇÖlerle i┼şlenmesi, veri gizlili─şi (SOC2, GLBA) konular─▒nda dikkat gerektirir. Hall├╝sinasyon riski, kredi uzla┼şt─▒rmas─▒nda operasyonel risk olu┼şturabilir.
+B├ûL├£M 2 ÔÇö Pazarlama & Rekabet Analizi
+5. Rakip Analizi
+Kriter
+Zolvo
+nCino
+Proxy (ABLSoft)
+HES LoanBox
+Temel ├ûzellikler
+AI back-office: uzla┼şt─▒rma, tahsilat, fatura do─şrulama, funder izleme
+Kredi ba┼şlang─▒├ğ ve ya┼şam d├Âng├╝s├╝ y├Ânetimi (Salesforce ├╝zerine)
+ABL portf├Ây y├Ânetimi, raporlama, teminat takibi
+U├ğtan uca kredi y├Ânetimi: ba┼şlang─▒├ğ, servis, tahsilat
+Art─▒lar─▒
+Haftada deploy, AI-native, YC destekli, d├╝┼ş├╝k entegrasyon s├╝resi
+B├╝y├╝k bankalar i├ğin kan─▒tlanm─▒┼ş, geni┼ş m├╝┼şteri taban─▒
+ABLÔÇÖye ├Âzel, uzun sekt├Âr deneyimi, compliance odakl─▒
+Mod├╝ler yap─▒, ISO 27001 sertifikal─▒
+Eksiklikleri
+├çok erken a┼şama, s─▒n─▒rl─▒ m├╝┼şteri referans─▒
+Y├╝ksek maliyet, uzun implementasyon, k├╝├ğ├╝k ┼şirketler i├ğin uygun de─şil
+Eski aray├╝z, AI entegrasyonu zay─▒f
+Factoring/ABLÔÇÖye ├Âzel de─şil, genel ama├ğl─▒ platform
+Farkl─▒la┼şmas─▒
+Sadece back-office, haftalarda go-live, insan m├╝dahalesi yaln─▒zca istisnalar
+Tam banka i┼şletim sistemi
+Onlarca y─▒ll─▒k ABL uzmanl─▒─ş─▒
+Geni┼ş segment deste─şi
+Pain Points
+├ûl├ğeklenme h─▒z─▒, marka bilinirli─şi, enterprise sat─▒┼ş d├Âng├╝s├╝
+K├╝├ğ├╝k-orta ├Âl├ğekli m├╝┼şteriler i├ğin fazla pahal─▒ ve a─ş─▒r
+Modern AI otomasyon katman─▒n─▒n yoklu─şu
+Sekt├Âre ├Âzg├╝n derinli─şin eksikli─şi
+ZolvoÔÇÖnun temel farkl─▒la┼şmas─▒: nCino ve HES LoanBox gibi platformlar kredi ya┼şam d├Âng├╝s├╝n├╝n tamam─▒n─▒ y├Ânetir; Zolvo sadece back-office operasyonlar─▒na odaklan─▒r ve bunu AI-native bir yakla┼ş─▒mla, haftalar i├ğinde hayata ge├ğirir. Bu kama stratejisi (wedge strategy) m├╝┼şteri edinimini h─▒zland─▒r─▒r ve entegrasyon direncini azalt─▒r.
+6. Pazarlama Stratejisi
+Genel Yakla┼ş─▒m
+Zolvo, erken a┼şama bir YC ┼şirketi olarak outbound a─ş─▒rl─▒kl─▒, founder-led bir pazarlama stratejisi izlemektedir. GTM playbookÔÇÖu Domu (YC S24) deneyiminden aktar─▒lm─▒┼ş g├Âr├╝nmektedir.
+LinkedIn Analizi
+Kanal: linkedin.com/company/zolvo-ai ÔÇö tipik erken a┼şama profili
+Format: Metin a─ş─▒rl─▒kl─▒, d├╝┼ş├╝k frekans (3 ki┼şilik ekip k─▒s─▒t─▒)
+Mesaj: ÔÇ£Commercial lendersÔÇØ ÔÇö ni┼ş, dikey odakl─▒ konumland─▒rma
+Kurucu profilleri ┼şirket sayfas─▒ndan ├ğok daha etkili ÔÇö ki┼şisel profiller %49 y├╝ksek etkile┼şim
+YC Launch Post Analizi (Mart 2026)
+ZolvoÔÇÖnun en g├╝├ğl├╝ pazarlama varl─▒─ş─▒ YC Launch PostÔÇÖtur:
+ProblemÔåÆ├ç├Âz├╝mÔåÆTraction s─▒ralamas─▒: Klasik YC anlat─▒ yap─▒s─▒
+Somut metrikler: 14 ki┼şilik ekip i┼şi, haftalarda go-live, 4T+ sekt├Âr b├╝y├╝kl├╝─ş├╝
+Sosyal kan─▒t: ─░lk m├╝┼şterinin ├╝r├╝n olmadan s├Âzle┼şme imzalamas─▒
+Konumland─▒rma Mesaj─▒
+Ana mesaj: ÔÇ£The AI layer between your bank accounts, LMS, and ops teams.ÔÇØ Bu mesaj; teknik al─▒c─▒ya (CTO/COO/Operations Director) hitap eder, entegrasyon riskini minimize eder ÔÇö mevcut sistemi de─şi┼ştirmiyor, ├╝st├╝ne oturuyor ÔÇö ve ROIÔÇÖyi a├ğ─▒k b─▒rak─▒r.
+B├ûL├£M 3 ÔÇö ÔÇ£G├Âster KendiniÔÇØ
+7. Eksikler ve Ele┼ştiri
+1. Karar Siyah Kutu Problemi ÔÇö En B├╝y├╝k Mimari Hata
+Zolvo ÔÇ£AI ajanlar─▒ uzla┼şt─▒r─▒rÔÇØ diyor ama ÔÇ£neden bu karar?ÔÇØ sorusunu hi├ğ cevaplam─▒yor. Bir collections manager sabah ekrana bakt─▒─ş─▒nda yaln─▒zca sonu├ğ g├Âr├╝yor: ÔÇ£Bu bor├ğluyu ara.ÔÇØ Peki bu karar─▒n arkas─▒nda ne var?
+Bu fintechÔÇÖte kabul edilemez bir eksikliktir. Sekt├Âr d├╝zenleyicileri (GLBA, SOC2) ÔÇ£audit trailÔÇØ ÔÇö yani her karar─▒n iz├Âl├╝─ş├╝n├╝ ÔÇö zorunlu k─▒lar. E─şer bir uzla┼şt─▒rma hatas─▒ meydana gelirse ve ÔÇ£bunu AI yapt─▒ÔÇØ haricinde bir a├ğ─▒klama yoksa, bu hem hukuki hem operasyonel bir kriz anlam─▒na gelir. ├£r├╝n├╝n mevcut anlat─▒s─▒nda bu problemi ├ğ├Âzd├╝─ş├╝ne dair hi├ğbir kan─▒t bulunmamaktad─▒r.
+2. Hall├╝sinasyon Riski ÔÇö Finansal Ba─şlamda ├ûl├╝mc├╝l Hata
+LLMÔÇÖlerin fatura uzla┼şt─▒rma ve ├Âdeme e┼şle┼ştirmede kullan─▒lmas─▒, hata maliyetinin son derece y├╝ksek oldu─şu bir ba─şlamd─▒r. Bir uzla┼şt─▒rma hatas─▒ likidite krizine, m├╝┼şteri kayb─▒na veya d├╝zenleyici cezalara neden olabilir. Mevcut mimaride bu riskin nas─▒l y├Ânetildi─şine dair kamuya a├ğ─▒k bir a├ğ─▒klama yoktur. Sistemin ÔÇ£hal├╝sineÔÇØ mi yoksa do─şru karara m─▒ ula┼şt─▒─ş─▒n─▒ anlamak i├ğin hi├ğbir g├╝ven e┼şi─şi mekanizmas─▒ tan─▒mlanmam─▒┼şt─▒r.
+3. Veri G├╝venli─şi ve Compliance Bo┼şlu─şu
+Ticari kredi verileri (banka i┼şlemleri, fatura detaylar─▒, bor├ğlu ileti┼şimleri) GLBA ve SOC2 kapsam─▒ndad─▒r. Web sitesinde ve YC lansman─▒nda bu konuya dair a├ğ─▒k bir g├╝vence verilmemi┼ştir. Kurumsal sat─▒┼şlarda g├╝venlik sorusu genellikle deal-breaker olmaktad─▒r. Bu bo┼şlu─şun kapat─▒lmamas─▒ sat─▒┼ş d├Âng├╝s├╝n├╝ uzatacakt─▒r.
+4. Tek Sekt├Âr Odakl─▒l─▒k ve Plato Riski
+Zolvo bilin├ğli olarak factoring ve ABLÔÇÖye odaklanm─▒┼şt─▒r. Bu k─▒sa vadede g├╝├ğl├╝ bir ni┼ş stratejisidir. Ancak bu ┼şirketin toplam adreslenebilir pazar─▒ (TAM) k─▒s─▒tl─▒d─▒r; mortgage, equipment finance veya supply chain finance gibi biti┼şik segmentlere geni┼şleme stratejisi hen├╝z belirsizdir. 3ÔÇô5 y─▒l i├ğinde b├╝y├╝me tavan─▒na ├ğarpma riski vard─▒r.
+8. Yeniden Tasar─▒m
+Alternatif Mimari: A├ğ─▒klanabilir AI Agent Platformu
+Mevcut yap─▒daki en temel sorun, karar s├╝recinin opak olmas─▒d─▒r. Ben bu ├╝r├╝n├╝ kursuyd─▒m, ┼şu d├Ârt prensip ├╝zerine in┼şa ederdim:
+Ayr─▒┼şt─▒r─▒lm─▒┼ş Agent Mimarisi: Her s├╝re├ğ (uzla┼şt─▒rma, tahsilat, fatura do─şrulama) ba─ş─▒ms─▒z, s─▒n─▒rl─▒ yetkili AI agentÔÇÖlar taraf─▒ndan y├╝r├╝t├╝l├╝r. Hata izolasyonu ve denetlenebilirlik artar.
+Confidence Gate + Human-in-the-Loop: Her agent ├ğ─▒kt─▒s─▒ bir g├╝ven skoru (0ÔÇô100) ├╝retir; e┼şi─şin alt─▒ndaki kararlar otomatik insan onay─▒na y├Ânlendirilir. Hall├╝sinasyon ve compliance riski burada ├ğ├Âz├╝l├╝r.
+├çift Kaynak Do─şrulama (Dual Ledger): AI karar─▒ deterministik kural motoru ├ğ─▒kt─▒s─▒yla ├ğapraz do─şrulan─▒r; iki sistem ayn─▒ sonuca ula┼ş─▒rsa otomatik onayland─▒ ÔÇö farkl─▒la┼ş─▒rsa insan onay─▒na d├╝┼şer.
+A├ğ─▒klanabilirlik Katman─▒: Her karar─▒n neden al─▒nd─▒─ş─▒ insan diline ├ğevrilir ve audit logÔÇÖa i┼şlenir. ÔÇ£Bu bor├ğlu 45 g├╝nd├╝r gecikmi┼ş ve ├Âdeme skoru d├╝┼şmekte ÔÇö bug├╝n aranmal─▒.ÔÇØ
+Tech Stack ├ûnerisi
+Katman
+Teknoloji
+Gerek├ğe
+Orchestration
+LangGraph
+Multi-agent workflow, production-ready, state management
+Model
+Llama 3.1 70B + fallback
+Maliyet-performans dengesi; hassas i┼şlemler i├ğin b├╝y├╝k model fallback
+G├Âzlemlenebilirlik
+Langfuse / Arize AI
+Finansal ba─şlamda agent davran─▒┼ş─▒ izleme ÔÇö compliance i├ğin zorunlu
+Veri Pipeline
+Apache Kafka
+Ger├ğek zamanl─▒ ├Âdeme event stream i┼şleme
+Kural Motoru
+Python + kural k├╝t├╝phanesi
+├çift kaynak do─şrulama i├ğin deterministik katman
+9. Optimizasyon & ├£retim Plan─▒
+Maliyet Optimizasyonu
+Y├Ântem
+Ara├ğ
+Tahmini Kazan─▒m
+Prompt Caching
+Anthropic / OpenAI cache API
+API maliyetinde %60ÔÇô80 azalma (tekrarlayan fatura ┼şablonlar─▒ i├ğin)
+Model Routing
+GPT-4o mini / Haiku + b├╝y├╝k model
+Basit e┼şle┼ştirme i┼şlemlerinde token maliyeti %50+ d├╝┼şer
+Batch Processing
+Anthropic Batch API
+Ger├ğek zamanl─▒ gerekmeyen i┼şlemlerde %50 maliyet avantaj─▒
+Fine-tuning
+Llama 3.1 70B domain fine-tune
+Sekt├Âre ├Âzel modeller: daha d├╝┼ş├╝k maliyet, daha y├╝ksek do─şruluk
+├£retim Plan─▒ (Zaman ├çizelgesi)
+D├Ânem
+Hedef
+Ay 1ÔÇô2
+SOC2 Type II haz─▒rl─▒─ş─▒, penetrasyon testi, veri ┼şifreleme audit. Compliance ├Ânce gelir ÔÇö enterprise sat─▒┼ş─▒n ├Ân├╝ndeki en b├╝y├╝k engeli kald─▒r─▒r.
+Ay 2ÔÇô3
+Model router, prompt caching, Langfuse entegrasyonu. Confidence Gate implementasyonu ÔÇö her agent ├ğ─▒kt─▒s─▒ art─▒k skor ├╝retiyor.
+Ay 3ÔÇô4
+Self-serve onboarding portal─▒, ilk 5 LMS i├ğin API konnekt├Âr k├╝t├╝phanesi. Implementasyon s├╝resini haftadan 2 g├╝ne indirme hedefi.
+Ay 4ÔÇô6
+─░kinci m├╝┼şteri onboarding, A/B test: agent vs. kural motoru kar┼ş─▒la┼şt─▒rmas─▒. Audit trail ├ğ─▒kt─▒lar─▒n─▒n compliance raporlamas─▒na entegrasyonu.
+Ay 6+
+├£r├╝n geni┼şlemesi: equipment finance ve supply chain finance segmentlerine Collections Intelligence mod├╝l├╝yle giri┼ş.
+10. Otomasyon Plan─▒ ÔÇö Collections Intelligence Sistemi
+Se├ğilen S├╝re├ğ: ├£r├╝n (Collections Decision Automation)
+Bir factoring ┼şirketinde her sabah ┼şunu ya┼şan─▒yor: Collections Manager, 50ÔÇô200 bor├ğluya bak─▒yor. Elinde Excel, LMS ve banka hesab─▒ var. Soruyor: ÔÇ£Bug├╝n kimi aray─▒m, kime e-posta at─▒lay─▒m, kimi bekletelim?ÔÇØ Bu karar tamamen sezgi + deneyim + manuel kontrol ile veriliyor. Saatler al─▒yor, tutars─▒z, ├Âl├ğeksiz.
+Bu otomasyonun hedefi: Collections ManagerÔÇÖ─▒n bu sabah rutinini sonu├ğ kalitesini d├╝┼ş├╝rmeden 2 saaten 10 dakikaya indirmek.
+Otomasyon Mimarisi
+Katman
+A├ğ─▒klama
+Veri
+Her bor├ğlu i├ğin: gecikme g├╝n├╝, a├ğ─▒k fatura tutar─▒, ge├ğmi┼ş ├Âdeme ba┼şar─▒ oran─▒, son ileti┼şimden ge├ğen g├╝n, gecikme trendi
+Risk Skorlama
+A─ş─▒rl─▒kl─▒ form├╝l ile 0ÔÇô100 aras─▒ risk skoru. A├ğ─▒klanabilir olmas─▒ i├ğin kural bazl─▒ ÔÇö ML de─şil. Her skor neye g├Âre hesapland─▒ sorusuna an─▒nda cevap verebilir.
+Aksiyon Motoru
+Skor + kural: Krit Ara (80-100) / E-posta At (60-79) / Takipte Tut (40-59) / Bekle (0-39)
+LLM A├ğ─▒klama
+Groq (Llama 3.1): Her bor├ğlu i├ğin 1ÔÇô2 c├╝mle insan dili a├ğ─▒klama. Karar─▒ vermez, a├ğ─▒klar. Bu kritik ayr─▒md─▒r.
+Dashboard
+Streamlit: Portf├Ây ├Âzeti, filtrelenebilir bor├ğlu tablosu, CSV export ÔÇö collections manager bug├╝n├╝ 10 dakikada planlar
+Risk Skorlama Form├╝l├╝
+De─şi┼şken
+A─ş─▒rl─▒k
+Gerek├ğe
+days_overdue (gecikme g├╝n├╝)
+%35
+En dolayl─▒ likidite riski g├Âstergesi
+outstanding_amount (a├ğ─▒k tutar)
+%25
+Finansal etki b├╝y├╝kl├╝─ş├╝
+payment_history_score (ge├ğmi┼ş skor)
+%20
+Davran─▒┼ş patternÔÇÖi ÔÇö olas─▒l─▒k tahmini i├ğin en g├╝├ğl├╝ sinyal
+days_since_contact (son ileti┼şim)
+%20
+Uzun s├╝re sessiz bor├ğlu = y├╝kselen risk
+trend (gecikme e─şilimi)
+%0 (katk─▒ de─şi┼şken)
+Y├Ân bilgisi ÔÇö skoru art─▒r─▒r veya azalt─▒r
+Maliyet ÔÇô Fayda Analizi
+Kalem
+Collections Manager (Mevcut)
+AI Collections Intelligence
+Ayl─▒k Maliyet
+5.000ÔÇô8.000 USD (ma┼şa┼ş + yan gider)
+150ÔÇô400 USD (API + sunucu)
+G├╝nl├╝k Portf├Ây ─░nceleme
+50ÔÇô200 bor├ğlu, 1.5ÔÇô2 saat
+50ÔÇô500 bor├ğlu, 10 dakika (onay─▒ insan verir)
+A├ğ─▒klanabilirlik
+Y├╝ksek (insan sezgisi, ama belgelenmemi┼ş)
+Y├╝ksek (skor + LLM a├ğ─▒klama + audit log)
+Tutars─▒zl─▒k Riski
+Y├╝ksek (yorgunluk, mood, ki┼şisel bias)
+D├╝┼ş├╝k (deterministik form├╝l + LLM a├ğ─▒klama)
+├ûl├ğeklenme
+Do─şrusal (her 200 bor├ğlu = yeni eleman)
+Marjinal maliyet (├Âl├ğeklenme API token maliyeti)
+ROI Hesab─▒
+Varsay─▒m: Orta ├Âl├ğekli bir factoring ┼şirketi, 150 bor├ğlu portf├Ây├╝, 1 Collections Manager.
+Kalem
+Y─▒ll─▒k Maliyet (USD)
+A├ğ─▒klama
+Collections Manager (mevcut)
+72.000 ÔÇô 96.000
+6.000ÔÇô8.000 USD/ay
+AI Collections Sistemi ÔÇö Geli┼ştirme
+8.000 ÔÇô 15.000
+Tek seferlik (Python + Streamlit + entegrasyon)
+AI Collections Sistemi ÔÇö ─░┼şletme
+1.800 ÔÇô 4.800
+150ÔÇô400 USD/ay (API + sunucu)
+1. Y─▒l Net Tasarruf
+52.000 ÔÇô 76.000 USD
+Sistem + i┼şletme d├╝┼ş├╝lm├╝┼ş
+Y─▒ll─▒k ROI (1. y─▒l)
+4x ÔÇô 7x
+Verimlilik art─▒┼ş─▒ dahil de─şil
+Verimlilik Art─▒┼ş─▒ ÔÇô Nas─▒l ├ûl├ğ├╝lecek?
+Collections ManagerÔÇÖ─▒n portf├Ây inceleme s├╝resi: Ba┼şlang─▒├ğ 2 saat ÔåÆ hedef 10 dakika
+Yanl─▒┼ş ├Âncelik oran─▒ (y├╝ksek riskli bor├ğlunun ka├ğ─▒r─▒lmas─▒): Haftal─▒k takip
+Tahsilat ba┼şar─▒ oran─▒: AI ├Âncelik s─▒ras─▒ vs. manuel s─▒ralamayla k─▒yasla
+Ortalama gecikme s├╝resi (days past due): ├çeyrekte azalma e─şilimi
+Stratejik De─şer
+Bu otomasyon yaln─▒zca maliyet tasarrufu sa─şlamaz. Collections ManagerÔÇÖ─▒n sabahlar─▒n─▒ ExcelÔÇÖe de─şil, istisnalara ve ili┼şki y├Ânetimine ay─▒rmas─▒n─▒ m├╝mk├╝n k─▒lar. ┼Şi┼ækette ger├ğek de─şer yaratan alan buras─▒d─▒r ÔÇö AIÔÇÖ─▒n yapamad─▒─ş─▒ ┼şey.
+Ayn─▒ zamanda bu sistem Zolvo i├ğin bir ├ğekirdek ├╝r├╝n katman─▒ olabilir: M├╝┼şteri kurulu┼şundan itibaren her bor├ğlu karar─▒n─▒n audit logÔÇÖu olu┼şmakta, bu veri ZolvoÔÇÖnun gelecekteki model e─şitimi i├ğin de─şer ta┼ş─▒maktad─▒r.
+BONUS ÔÇö PoC: Collections Intelligence Prototipi
+Bolu 10ÔÇÖda kurgulanan Collections Intelligence sistemi, ├ğal─▒┼ş─▒r bir prototip olarak geli┼ştirilmi┼ştir. Prototip; Python, Streamlit ve Groq API (Llama 3.1 70B) kullanmaktad─▒r. T├╝m bile┼şenler ├╝cretsizdir.
+Prototip Kapsam─▒
+50 adet mock bor├ğlu verisi (ger├ğek├ği da─ş─▒l─▒m)
+A─ş─▒rl─▒kl─▒ risk skorlama motoru (a├ğ─▒klanabilir form├╝l)
+4 katmanl─▒ aksiyon s─▒n─▒fland─▒rmas─▒ (Hemen Ara / E-posta At / Takipte Tut / Bekle)
+Groq API ile her bor├ğlu i├ğin T├╝rk├ğe / ─░ngilizce a├ğ─▒klama
+Streamlit dashboard: portf├Ây ├Âzeti, filtrelenebilir tablo, CSV export
+Kullan─▒lan Teknolojiler
+Teknoloji
+Versiyon / Model
+Kullan─▒m Alan─▒
+Python
+3.10+
+Veri i┼şleme, skorlama motoru
+Streamlit
+Latest
+Dashboard aray├╝zy
+Groq API
+Llama 3.1 70B
+A├ğ─▒klanabilir karar metni ├╝retimi
+Pandas / NumPy
+Standard
+Veri manipulasyonu ve feature hesaplama
+Video Sunumu
+Prototip, a┼şa─ş─▒daki YouTube linki ├╝zerine yay─▒nlanm─▒┼şt─▒r. Video; sistemin ├ğal─▒┼şt─▒r─▒lmas─▒n─▒, dashboard aray├╝z├╝n├╝ ve al─▒nan kararlar─▒n arkas─▒ndaki mant─▒─ş─▒ ad─▒m ad─▒m a├ğ─▒klamaktad─▒r.
+YouTube Linki: [Video teslim ├Âncesi buraya eklenecek]
+YAPAY ZEKA VE PROMPTING
+Kullan─▒lan Yapay Zeka Ara├ğlar─▒
+Ara├ğ
+Kullan─▒m Alan─▒
+Tercih Gerek├ğesi
+Claude Sonnet 4.6 (Anthropic)
+Ana analiz, sentez, rapor yaz─▒m─▒
+Uzun form analitik i├ğerik, finansal ba─şlam─▒ anlama, i┼ş geli┼ştirme perspektifi
+Web Ara┼şmas─▒ (Claude entegre)
+Zolvo YC sayfas─▒, rakip ara┼ştirmas─▒, sekt├Âr verileri
+Zolvo 2026 kurulu┼şu ÔÇö g├╝ncel bilgiye eri┼şim kritikti
+Groq API (Llama 3.1 70B)
+PoC prototipi ÔÇö bor├ğlu a├ğ─▒klama motoru
+├£cretsis tier, y├╝ksek h─▒z, GPT-4 seviyesine yak─▒n kalite
+Bilgilerin Do─şrulu─şu ÔÇö Do─şrulama S├╝reci
+Zolvo YC sayfas─▒ do─şrudan ├ğekildi: Kurucu profilleri, traction verileri ve launch post i├ğeri─şi birincil kaynak
+Zolvo.com web sitesi meta verileri kontrol edildi: ├£r├╝n konumland─▒rmas─▒ ve anahtar kelimeler teyit edildi
+Rakip verileri birden fazla kaynaktan (G2, HES FinTech, nCino SEC dosyalar─▒) ├ğapraz do─şruland─▒
+Sekt├Âr b├╝y├╝kl├╝─ş├╝ (4T+) ZolvoÔÇÖnun kendi beyan─▒ndan al─▒nd─▒ ÔÇö ba─ş─▒ms─▒z do─şrulama: factoring sekt├Âr├╝ b├╝y├╝kl├╝─ş├╝ literat├╝rle tutarl─▒
+ROI hesab─▒ndaki rakamlar (6.000ÔÇô8.000 USD/ay SDR ma┼şas─▒) ABD i┼ş piyasas─▒ ortalamalar─▒yla ├Ârt├╝┼şt├╝r├╝ld├╝
+Hall├╝sinasyon Y├Ânetimi
+Do─şrulanamayan spesifik rakam veya iddia i├ğermemeye ├Âzen g├Âsterildi
+Fiyatland─▒rma modeli gibi kamuya a├ğ─▒k olmayan bilgiler a├ğ─▒k├ğa ÔÇ£├ğ─▒kar─▒mÔÇØ olarak etiketlendi
+Rakip ├╝r├╝n ├Âzellikleri birincil kaynaklardan (kendi web siteleri, G2 yorumlar─▒) do─şruland─▒
+ZolvoÔÇÖnun teknoloji stackÔÇÖ─▒ kamuya a├ğ─▒k de─şil ÔÇö bu b├Âl├╝m ÔÇ£beklenen mimariÔÇØ olarak ├ğer├ğevelendi
+ROI hesaplar─▒nda ├ğok geni┼ş aral─▒klardan ka├ğ─▒n─▒ld─▒; ger├ğek├ği senaryolar ├╝zerinden hesaplama yap─▒ld─▒
+Kullan─▒lan Prompt Yakla┼ş─▒m─▒ (TCREI)
+Ad─▒m
+TCREI
+Uygulama
+1
+Task (G├Ârev)
+Zolvo startupÔÇÖ─▒n─▒ 10 maddelik case study ├ğer├ğevesiyle analiz et; Collections Intelligence PoC mimarisini kur
+2
+Context (Ba─şlam)
+YC Spring 2026 ┼şirketi, factoring/ABL sekt├Âr├╝, AI Engineer / Data Scientist staj ba┼şvurusu, 6 g├╝n teslim s├╝resi
+3
+References (Referanslar)
+YC ┼şirket sayfas─▒, zolvo.com, mevcut case study raporu, sekt├Âr literat├╝r├╝
+4
+Evaluate (De─şerlendir)
+Her b├Âl├╝m├╝n do─şrulanabilir kayna─şa dayand─▒─ş─▒ kontrol edildi; kamuya a├ğ─▒k olmayan bilgiler etiketlendi
+5
+Iterate (Yinele)
+B├Âl├╝m 7ÔÇô10 tamamen yeniden yaz─▒ld─▒; otomasyon se├ğimi pazarlamadan ├╝r├╝ne ta┼ş─▒nd─▒; ROI hesab─▒ ger├ğek├ği rakamlarla yeniden kurguland─▒
+Haziran 2026 | Oktavis ├ù Tessera Lab Case Study | Zolvo Analiz Raporu
